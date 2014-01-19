@@ -81,7 +81,7 @@
                                        dest="${project.build.directory}"/>
                                 <echo message="moving resources"/>
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/elasticsearch-js-${elasticsearch.version}"/>
+                                    <fileset dir="${project.build.directory}/elasticsearch-js"/>
                                 </move>
                             </target>
                         </configuration>
