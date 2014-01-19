@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -13,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>elasticsearch-js</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.0</version>
     <name>elasticsearch-js</name>
     <description>WebJar for Elasticsearch.js</description>
     <url>http://webjars.org</url>
@@ -37,7 +35,7 @@
         <url>http://github.com/webjars/elasticsearch-js</url>
         <connection>scm:git:https://github.com/webjars/elasticsearch-js.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/elasticsearch-js.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>elasticsearch-js-1.1.0</tag>
     </scm>
 
     <developers>
@@ -76,12 +74,11 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
-                                <echo message="unzip archive"/>
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip"
-                                       dest="${project.build.directory}"/>
-                                <echo message="moving resources"/>
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/elasticsearch-js"/>
+                                    <fileset dir="${project.build.directory}/elasticsearch-js" />
                                 </move>
                             </target>
                         </configuration>
