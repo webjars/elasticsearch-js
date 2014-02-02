@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>elasticsearch-js</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.0-SNAPSHOT</version>
     <name>elasticsearch-js</name>
     <description>WebJar for Elasticsearch.js</description>
     <url>http://webjars.org</url>
