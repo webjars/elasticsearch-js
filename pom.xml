@@ -18,7 +18,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <elasticsearch.version>1.5.7</elasticsearch.version>
+        <elasticsearch.version>1.5.8</elasticsearch.version>
         <elasticsearch.sourceUrl>https://download.elasticsearch.org/elasticsearch/elasticsearch-js</elasticsearch.sourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${elasticsearch.version}</destDir>
     </properties>
