@@ -12,16 +12,31 @@
     <groupId>org.webjars</groupId>
     <artifactId>elasticsearch-js</artifactId>
     <version>2.4.1-SNAPSHOT</version>
-    <name>elasticsearch-js</name>
+    <name>Elasticsearch.js</name>
     <description>WebJar for Elasticsearch.js</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <elasticsearch.version>2.4.0</elasticsearch.version>
-        <elasticsearch.sourceUrl>https://download.elasticsearch.org/elasticsearch/elasticsearch-js</elasticsearch.sourceUrl>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${elasticsearch.version}</destDir>
+        <upstream.version>2.4.1</upstream.version>
+        <upstream.url>https://download.elasticsearch.org/elasticsearch/elasticsearch-js/elasticsearch-js-${upstream.version}.zip</upstream.url>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
+        <requirejs>
+            {
+                "paths": {
+                    "elasticsearch-js": "elasticsearch-js"
+                }
+            }
+        </requirejs>
     </properties>
+
+    <developers>
+        <developer>
+            <id>arenard</id>
+            <name>Arnaud RENARD</name>
+            <email>arenard@gmail.com</email>
+        </developer>
+    </developers>
 
     <licenses>
         <license>
@@ -38,33 +53,8 @@
         <tag>HEAD</tag>
     </scm>
 
-    <developers>
-        <developer>
-            <id>arenard</id>
-            <name>Arnaud RENARD</name>
-            <email>arenard@gmail.com</email>
-        </developer>
-    </developers>
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>wagon-maven-plugin</artifactId>
-                <version>1.0-beta-5</version>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
-                        <configuration>
-                            <url>${elasticsearch.sourceUrl}</url>
-                            <fromFile>elasticsearch-js-${elasticsearch.version}.zip</fromFile>
-                            <toFile>${project.build.directory}/${project.artifactId}.zip</toFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.7</version>
@@ -74,6 +64,8 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
+                                <echo message="download archive" />
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
                                 <echo message="unzip archive" />
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
@@ -95,7 +87,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.2</version>
+                <version>1.6.3</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>sonatype-nexus-staging</serverId>
